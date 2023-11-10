@@ -31,7 +31,7 @@ jobs:
   build:
     name: build
     needs: retrieve-project
-    if: ${{ needs.retrieve-project.outputs.deployment-enabled == 'true' }}
+    #if: ${{ needs.retrieve-project.outputs.deployment-enabled == 'true' }}
     uses: ./.github/workflows/gundwn.gg-build.yaml
     with:
       site-url: https://IONOS_DEPLOY_NOW_SITE_URL
