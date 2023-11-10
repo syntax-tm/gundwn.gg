@@ -2,10 +2,34 @@
   "name": "gundwn.gg",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve --open --config webpack.config.js"
   },
   "author": "syntax-tm",
-  "license": "ISC"
+  "license": "ISC",
+  "browser": {
+    "webpack": false
+  },
+  "dependencies": {
+    "base64-image-loader": "^1.2.1",
+    "bootstrap": "^5.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.13.2",
+    "particles.js": "^2.0.0",
+    "restify": "^11.1.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
 }
