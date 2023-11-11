@@ -1,4 +1,5 @@
 const path = require('path');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
@@ -9,13 +10,14 @@ module.exports = {
     speedruns:'./src/speedruns.js'
   },
   plugins: [
-    new webpack.ProgressPlugin(),
+    new FaviconsWebpackPlugin('./src/favicon.ico'),
     new HtmlWebpackPlugin({
-      title: 'gundwn.gg',
+      title: '@Gundwn',
       hash: false,
       myPageHeader: 'gundwn.gg',
       template: './src/index.html'
     }),
+    new webpack.ProgressPlugin()
   ],
   output: {
     filename: '[name].bundle.js',
