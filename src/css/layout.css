@@ -1,0 +1,19 @@
+#footer-image {
+  background: url('../img/halo_3_general.png') no-repeat left to;
+  filter: grayscale(1);
+  opacity: 0.3;
+  transition: 0.8s;
+  width: 150px;
+  height: 150px;
+}
+
+#footer-image:hover {
+  filter: grayscale(.2);
+  opacity: 0.8;
+}
+
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
