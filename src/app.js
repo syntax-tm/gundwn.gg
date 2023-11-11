@@ -59,4 +59,4 @@ $('#footer-image').attr('src', h3);
 
 $('a').attr('target', '_blank');
 
-console.log(links);
+//console.log(links);
