@@ -64,7 +64,7 @@ hr {
   margin: 0px;
 }
 
-.social-button, .card {
+.social-button {
   z-index: 0;
   overflow: hidden;
   margin-bottom: 16px;
@@ -78,13 +78,14 @@ hr {
   font-size: 1.3em;
 }
 
-.card-body {
-  padding: 0;
-}
-
 .category {
   text-align: center;
   width: 60px;
+  max-width: 60px;
+}
+
+.pc-part-name {
+  width: 80%;
 }
 
 button {

@@ -13,50 +13,57 @@ import kvm from './img/kvm.png';
 import gskill from './img/gskill.png';
 import astro from './img/astro.png';
 import desk from './img/desk.png';
-//import zotac from './img/zotac.png';
 import samsung from './img/samsung.png';
 import samsung2 from './img/samsung_light.png';
 import './css/style.css';
 import 'particles.js';
 import $ from 'jquery';
 const particlesJson = require('./config/particles.json');
-//const links = require('./config/links.json');
 import links from './config/links.json';
-//var h3 = require("./img/halo_3_general.png");
-//var h3b = require("./img/halo_3_general_bw.png");
 
 particlesJS('background', particlesJson);
 
 $('#pcpartpicker').attr('src', pcpartpicker);
+$('#pcpartpicker').attr('title', 'PC Part Picker');
 $('#cpu').attr('src', amd);
+$('#cpu').attr('title', 'AMD');
 $('#psu').attr('src', corsair);
+$('#psu').attr('title', 'Corsair');
 $('#display').attr('src', samsung);
+$('#display').attr('title', 'Samsung');
 $('#mobo').attr('src', asusRog);
+$('#mobo').attr('title', 'ASUS RoG');
 $('#gpu').attr('src', nvidia);
+$('#gpu').attr('title', 'NVidia');
 $('#keyboard').attr('src', leopold);
+$('#keyboard').attr('title', 'Leopold');
 $('#ram').attr('src', gskill);
+$('#ram').attr('title', 'GSkill');
 $('#headset').attr('src', astro);
+$('#headset').attr('title', 'Astro');
 $('#mouse').attr('src', corsair);
+$('#mouse').attr('title', 'Corsair');
 $('#speakers').attr('src', logi);
+$('#speakers').attr('title', 'Logi');
 $('#kvm').attr('src', kvm);
+$('#kvm').attr('title', 'KVM');
 $('#storage').attr('src', samsung);
+$('#storage').attr('title', 'Samsung');
 $('#chair').attr('src', corsair);
+$('#chair').attr('title', 'Corsair');
 $('#desk').attr('src', desk);
+$('#desk').attr('title', 'Desk');
 
 $('.profile-image').attr('src', p);
 $('#footer-image').attr('src', h3);
 
-//$('#footer-image').hover(
-//    function() {
-//        $(this).attr('src', h3);
-//    },
-//    function() {
-//        $(this).attr('src', h3b);
-//    }
-//)
+$('.pc-part-name').each(function(index) {
+    const el = $(this);
+    const val = el.text();
 
+    el.attr('title', val);
 
+    console.log(val);
+});
 
 $('a').attr('target', '_blank');
-
-//console.log(links);
