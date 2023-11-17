@@ -40,8 +40,9 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|jpeg|tiff|webp|bmp)$/i,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
+          limit: true,
           name: '[path][name].[ext]'
         },
       },
