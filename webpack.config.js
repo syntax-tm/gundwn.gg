@@ -42,18 +42,9 @@ module.exports = {
         test: /\.(png|svg|jpg|gif|jpeg|tiff|webp|bmp)$/i,
         loader: 'url-loader',
         options: {
-          limit: true,
-          name: '[path][name].[ext]'
+          limit: true
         },
       },
-      //{
-      //  test: /\.json$/,
-      //  type: 'json'
-      //},
-      //{
-      //  test: /.json$/,
-      //  use: 'json'
-      //}
     ],
   }
 };
