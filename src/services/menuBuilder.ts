@@ -70,10 +70,10 @@ function buildSocialCategory(): XmbCategory {
         new XmbItem("facebook", "Facebook", icons.facebook, 'https://www.facebook.com/gundwnsrc'),
         new XmbItem("instagram", "Instagram", icons.instagram, 'https://instagram.com/GundwnSRC'),
         new XmbItem("x", "X", icons.xTwitter, 'https://x.com/gundwnsrc'),
-        XmbItem.create("snapchat", "Snapchat", icons.snapchat, () => { alert(''); }),
+        //XmbItem.create("snapchat", "Snapchat", icons.snapchat, () => { alert(''); }),
         new XmbItem("spotify", "Spotify", icons.spotify, 'https://open.spotify.com/user/1280499465'),
         new XmbItem("stats.fm", "Stats.fm", icons.chart, 'https://stats.fm/gundwn'),
-        new XmbItem("telegram", "Telegram", icons.telegram, 'https://t.me/Gundwn')
+        //new XmbItem("telegram", "Telegram", icons.telegram, 'https://t.me/Gundwn')
     ];
     const category: XmbCategory = new XmbCategory(3, "Social", icons.user, items);
 

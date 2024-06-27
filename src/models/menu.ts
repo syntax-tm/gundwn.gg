@@ -274,6 +274,10 @@ export class XmbMenu implements IXmbMenu {
 
     next.setActive();
 
+    if (previous.position >= next.items.length) {
+      next.position = 0;
+    }
+
     this.x = nextIndex;
     this.y = next.position;
 
