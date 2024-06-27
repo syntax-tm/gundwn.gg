@@ -1,3 +1,15 @@
-# gundwn.gg
+# 🚀 Welcome to your new awesome project!
 
-This repository is a replacement of my current LinkTree profile, which is used to share links to various social media, development-related, and other links for a variety of platforms.
+This project has been created using **webpack-cli**, you can now run
+
+```
+npm run build
+```
+
+or
+
+```
+yarn build
+```
+
+to bundle your application
