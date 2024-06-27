@@ -1,0 +1,30 @@
+.title h1 {
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  color: #dadada;
+  text-shadow: 2px 2px 5px black;
+}
+
+.title p {
+  font-size: 32px;
+  margin-top: -10px;
+  letter-spacing: -2px;
+  color: #dadada;
+  text-shadow: 2px 2px 5px black;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* margin-bottom: 20%; */
+  padding: 40px;
+  /* opacity: 0; */
+  transition: opacity 3s ease-in-out;
+  /* position: absolute; */
+  /* float: right; */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
