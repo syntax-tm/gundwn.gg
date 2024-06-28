@@ -9,7 +9,7 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Trey (Gundwn)',
+  title: 'Trey | Social, Games, and More Links',
   description: 'Profiles for gaming, social media, development, and more.',
 };
 

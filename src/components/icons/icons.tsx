@@ -65,6 +65,7 @@ import trueachievementsIcon from "public/image/xmb/trueachievements.png";
 import exophaseIcon from "public/image/xmb/exophase.png";
 import chocoIcon from "public/image/xmb/choco.png";
 import nugetIcon from "public/image/xmb/nuget.png";
+import halo3generalBwIcon from "public/image/halo_3_general_bw.png";
 
 const width: number = 150;
 const height: number = 150;
@@ -230,6 +231,9 @@ export const user: ReactElement = (
 );
 export const video: ReactElement = (
     <Image src={videoIcon} className="xmb-icon" alt="video icon" />
+);
+export const h3general: ReactElement = (
+    <Image src={halo3generalBwIcon} className="h3-general" alt="h3 general icon" />
 );
 export const trueachievements: ReactElement = (
     <Image
