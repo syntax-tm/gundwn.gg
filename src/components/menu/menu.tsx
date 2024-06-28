@@ -118,12 +118,21 @@ const MenuCategory = ({ index, category, x, y }: MenuCategoryProps) => {
 };
 
 const config: XmbMenu = build();
-let keyDownHandlerSet = false;
+let addedListeners = false;
+
+const repeatCodes: string[] = [
+  'arrowdown', 'arrowleft', 'arrowup', 'arrowright', 'w', 'a', 's', 'd'
+];
+
+function allowedRepeat(key: string): boolean {
+  return repeatCodes.includes(key.toLowerCase());
+}
 
 export default function Menu() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const shift = useRef(false);
 
   const play = () => {
     if (audioRef.current) {
@@ -139,8 +148,33 @@ export default function Menu() {
   };
 
   const handleWheel = (e: WheelEvent) => {
+
+    let down = e.deltaY > 0;
+
+    // LEFT + RIGHT
+    if (shift.current) {
+      if (down) {
+        e.preventDefault();
+        play();
+        let position = config.moveRight();
+        if (position === null) return;
+        setX(position.x);
+        setY(position.y);
+        console.log(`RIGHT -> [${position}]`);
+      }
+      else {
+        e.preventDefault();
+        play();
+        let position = config.moveLeft();
+        if (position === null) return;
+        setX(position.x);
+        setY(position.y);
+        console.log(`LEFT -> [${x}, ${y}]`);
+      }
+    }
+
     // DOWN
-    if (e.deltaY > 0) {
+    if (down) {
       e.preventDefault();
       play();
       let position = config.moveDown();
@@ -160,7 +194,25 @@ export default function Menu() {
     }
   };
 
+  const handleKeyUp = (e: KeyboardEvent) => {
+    if (e.key === 'Shift') {
+      shift.current = false;
+    }
+  };
+
   const handleKeyDown = (e: KeyboardEvent) => {
+
+    if (e.repeat && !allowedRepeat(e.key)) {
+      return;
+    }
+
+    if (e.key.toLowerCase() === 'shift') {
+      e.preventDefault();
+      shift.current = true;
+      return;
+    }
+
+    console.log(`key: ${e.key}, code: ${e.code}, shift: ${e.shiftKey}, alt: ${e.altKey}, ctrl: ${e.ctrlKey}, repeat: ${e.repeat}`);
 
     // SPACE
     if (e.key == ' ' || e.code == 'Space' || e.keyCode === 32) {
@@ -181,30 +233,34 @@ export default function Menu() {
       }
 
       console.log(`SPACE -> [${x}, ${y}]`);
+
+      return;
     }
 
     // DOWN
-    if (['ArrowDown', 'S', 's'].includes(e.key)) {
+    if (['arrowdown', 's'].includes(e.key.toLowerCase())) {
       e.preventDefault();
       play();
       let position = config.moveDown();
       if (position === null) return;
       setY(position.y);
       console.log(`DOWN -> [${x}, ${y}]`);
+      return;
     }
 
     // UP
-    else if (['ArrowUp', 'W', 'w'].includes(e.key)) {
+    if (['arrowup', 'w'].includes(e.key.toLowerCase())) {
       e.preventDefault();
       play();
       let position = config.moveUp();
       if (position === null) return;
       setY(position.y);
       console.log(`UP -> [${x}, ${y}]`);
+      return;
     }
 
     // RIGHT
-    else if (['ArrowRight', 'D', 'd'].includes(e.key)) {
+    if (['arrowright', 'd'].includes(e.key.toLowerCase())) {
       e.preventDefault();
       play();
       let position = config.moveRight();
@@ -212,10 +268,11 @@ export default function Menu() {
       setX(position.x);
       setY(position.y);
       console.log(`RIGHT -> [${position}]`);
+      return;
     }
 
     // LEFT
-    else if (['ArrowLeft', 'A', 'a'].includes(e.key)) {
+    if (['arrowleft', 'a'].includes(e.key.toLowerCase())) {
       e.preventDefault();
       play();
       let position = config.moveLeft();
@@ -223,18 +280,24 @@ export default function Menu() {
       setX(position.x);
       setY(position.y);
       console.log(`LEFT -> [${x}, ${y}]`);
+      return;
     }
+
+    //else {
+    //  console.log(`key: ${e.key}, code: ${e.code}, shift: ${e.shiftKey}, alt: ${e.altKey}, ctrl: ${e.ctrlKey}`);
+    //}
   };
 
   useEffect(() => {
-    if (keyDownHandlerSet) {
+    if (addedListeners) {
       return;
     }
 
     document.body.addEventListener('keydown', handleKeyDown);
+    document.body.addEventListener('keyup', handleKeyUp);
     document.body.addEventListener('wheel', handleWheel);
 
-    keyDownHandlerSet = true;
+    addedListeners = true;
   }, []);
 
   const w = [0, 0, 0, 0, 0][x];
