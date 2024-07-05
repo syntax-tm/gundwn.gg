@@ -20,7 +20,7 @@ export interface IXmbItem {
   link: string | null;
   type: string;
   icon: ReactElement | null;
-  description?: string;
+  description: string | null;
   shortDescription?: string;
   category?: string;
   shortCategory?: string;
@@ -32,7 +32,7 @@ export class XmbItem implements IXmbItem {
   link: string | null = '';
   type: string = '';
   icon: ReactElement | null;
-  description?: string = '';
+  description: string | null = '';
   shortDescription?: string = '';
   category?: string = '';
   shortCategory?: string = '';
@@ -40,11 +40,12 @@ export class XmbItem implements IXmbItem {
   visible: boolean = true;
   onClick: null | (() => void) = null;
 
-  constructor(id: string = '', title: string = '', icon: ReactElement | null = null, link: string | null = null) {
+  constructor(id: string = '', title: string = '', icon: ReactElement | null = null, link: string | null = null, description: string | null = null) {
     this.id = id;
     this.title = title;
     this.icon = icon;
     this.link = link;
+    this.description = description;
   }
 
   static create(id: string = '', title: string = '', icon: ReactElement | null, onClick: null | (() => void)): XmbItem
@@ -163,6 +164,10 @@ export class XmbMenu implements IXmbMenu {
     return this.items[this.position.x];
   }
 
+  getCurrentItem(): XmbItem {
+    return this.items[this.position.x].getCurrentItem();
+  }
+
   getCurrentPosition(): Position {
     return this.position;
   }
@@ -186,6 +191,8 @@ export class XmbMenu implements IXmbMenu {
   setPosition(x: number, y: number): Position {
     if (x < 0) throw new RangeError("Argument value cannot be negative");
     if (y < 0) throw new RangeError("Argument value cannot be negative");
+
+    if (x >= this.items.length) throw new RangeError("Argument value greater than number of categories.");
 
     this._position.x = x;
     this._position.y = y;

@@ -71,166 +71,166 @@ const width: number = 150;
 const height: number = 150;
 
 export const boxes: ReactElement = (
-    <FontAwesomeIcon icon={faBoxesPacking} className="xmb-icon" />
+    <FontAwesomeIcon icon={faBoxesPacking} className="xmb-icon justify-self-center" />
 );
 export const chart: ReactElement = (
-    <FontAwesomeIcon icon={faChartLine} className="xmb-icon" />
+    <FontAwesomeIcon icon={faChartLine} className="xmb-icon justify-self-center" />
 );
 export const star: ReactElement = (
-    <FontAwesomeIcon icon={faStar} className="xmb-icon" />
+    <FontAwesomeIcon icon={faStar} className="xmb-icon justify-self-center" />
 );
 export const code: ReactElement = (
-    <FontAwesomeIcon icon={faCode} className="xmb-icon" />
+    <FontAwesomeIcon icon={faCode} className="xmb-icon justify-self-center" />
 );
 export const cog: ReactElement = (
-    <FontAwesomeIcon icon={faCog} className="xmb-icon" />
+    <FontAwesomeIcon icon={faCog} className="xmb-icon justify-self-center" />
 );
 export const trophy: ReactElement = (
-    <FontAwesomeIcon icon={faTrophy} className="xmb-icon" />
+    <FontAwesomeIcon icon={faTrophy} className="xmb-icon justify-self-center" />
 );
 export const award: ReactElement = (
-    <FontAwesomeIcon icon={faAward} className="xmb-icon" />
+    <FontAwesomeIcon icon={faAward} className="xmb-icon justify-self-center" />
 );
 export const message: ReactElement = (
-    <FontAwesomeIcon icon={faMessage} className="xmb-icon" />
+    <FontAwesomeIcon icon={faMessage} className="xmb-icon justify-self-center" />
 );
-// export const music: ReactElement = <FontAwesomeIcon icon={faMusic} className='xmb-icon' />
+// export const music: ReactElement = <FontAwesomeIcon icon={faMusic} className='xmb-icon justify-self-center' />
 export const c: ReactElement = (
-    <FontAwesomeIcon icon={faC} className="xmb-icon" />
+    <FontAwesomeIcon icon={faC} className="xmb-icon justify-self-center" />
 );
 export const medal: ReactElement = (
-    <FontAwesomeIcon icon={faMedal} className="xmb-icon" />
+    <FontAwesomeIcon icon={faMedal} className="xmb-icon justify-self-center" />
 );
-//xport const info: ReactElement = <FontAwesomeIcon icon={faInfoCircle} className='xmb-icon' />
+//xport const info: ReactElement = <FontAwesomeIcon icon={faInfoCircle} className='xmb-icon justify-self-center' />
 export const computer: ReactElement = (
-    <FontAwesomeIcon icon={faComputer} className="xmb-icon" />
+    <FontAwesomeIcon icon={faComputer} className="xmb-icon justify-self-center" />
 );
 export const computerMouse: ReactElement = (
-    <FontAwesomeIcon icon={faComputerMouse} className="xmb-icon" />
+    <FontAwesomeIcon icon={faComputerMouse} className="xmb-icon justify-self-center" />
 );
 export const keyboard: ReactElement = (
-    <FontAwesomeIcon icon={faKeyboard} className="xmb-icon" />
+    <FontAwesomeIcon icon={faKeyboard} className="xmb-icon justify-self-center" />
 );
 export const headset: ReactElement = (
-    <FontAwesomeIcon icon={faHeadset} className="xmb-icon" />
+    <FontAwesomeIcon icon={faHeadset} className="xmb-icon justify-self-center" />
 );
 export const laptop: ReactElement = (
-    <FontAwesomeIcon icon={faLaptop} className="xmb-icon" />
+    <FontAwesomeIcon icon={faLaptop} className="xmb-icon justify-self-center" />
 );
 export const desktop: ReactElement = (
-    <FontAwesomeIcon icon={faDesktop} className="xmb-icon" />
+    <FontAwesomeIcon icon={faDesktop} className="xmb-icon justify-self-center" />
 );
-// export const video: ReactElement = <FontAwesomeIcon icon={faVideo} className='xmb-icon' />
+// export const video: ReactElement = <FontAwesomeIcon icon={faVideo} className='xmb-icon justify-self-center' />
 export const disease: ReactElement = (
-    <FontAwesomeIcon icon={faDisease} className="xmb-icon" />
+    <FontAwesomeIcon icon={faDisease} className="xmb-icon justify-self-center" />
 );
 export const copy: ReactElement = (
-    <FontAwesomeIcon icon={faCopy} className="xmb-icon" />
+    <FontAwesomeIcon icon={faCopy} className="xmb-icon justify-self-center" />
 );
 export const github: ReactElement = (
-    <FontAwesomeIcon icon={faGithub} className="xmb-icon" />
+    <FontAwesomeIcon icon={faGithub} className="xmb-icon justify-self-center" />
 );
 export const githubAlt: ReactElement = (
-    <FontAwesomeIcon icon={faGithubAlt} className="xmb-icon" />
+    <FontAwesomeIcon icon={faGithubAlt} className="xmb-icon justify-self-center" />
 );
 export const gitlab: ReactElement = (
-    <FontAwesomeIcon icon={faGitlab} className="xmb-icon" />
+    <FontAwesomeIcon icon={faGitlab} className="xmb-icon justify-self-center" />
 );
 export const stackOverflow: ReactElement = (
-    <FontAwesomeIcon icon={faStackOverflow} className="xmb-icon" />
+    <FontAwesomeIcon icon={faStackOverflow} className="xmb-icon justify-self-center" />
 );
 export const youtube: ReactElement = (
-    <FontAwesomeIcon icon={faYoutube} className="xmb-icon" />
+    <FontAwesomeIcon icon={faYoutube} className="xmb-icon justify-self-center" />
 );
 export const spotify: ReactElement = (
-    <FontAwesomeIcon icon={faSpotify} className="xmb-icon" />
+    <FontAwesomeIcon icon={faSpotify} className="xmb-icon justify-self-center" />
 );
 export const facebook: ReactElement = (
-    <FontAwesomeIcon icon={faFacebook} className="xmb-icon" />
+    <FontAwesomeIcon icon={faFacebook} className="xmb-icon justify-self-center" />
 );
 export const discord: ReactElement = (
-    <FontAwesomeIcon icon={faDiscord} className="xmb-icon" />
+    <FontAwesomeIcon icon={faDiscord} className="xmb-icon justify-self-center" />
 );
 export const xbox: ReactElement = (
-    <FontAwesomeIcon icon={faXbox} className="xmb-icon" />
+    <FontAwesomeIcon icon={faXbox} className="xmb-icon justify-self-center" />
 );
 export const playstation: ReactElement = (
-    <FontAwesomeIcon icon={faPlaystation} className="xmb-icon" />
+    <FontAwesomeIcon icon={faPlaystation} className="xmb-icon justify-self-center" />
 );
 export const steam: ReactElement = (
-    <FontAwesomeIcon icon={faSteam} className="xmb-icon" />
+    <FontAwesomeIcon icon={faSteam} className="xmb-icon justify-self-center" />
 );
 export const amazon: ReactElement = (
-    <FontAwesomeIcon icon={faAmazon} className="xmb-icon" />
+    <FontAwesomeIcon icon={faAmazon} className="xmb-icon justify-self-center" />
 );
 export const battleNet: ReactElement = (
-    <FontAwesomeIcon icon={faBattleNet} className="xmb-icon"  />
+    <FontAwesomeIcon icon={faBattleNet} className="xmb-icon justify-self-center"  />
 );
 export const docker: ReactElement = (
-    <FontAwesomeIcon icon={faDocker} className="xmb-icon fill-white accent-white" />
+    <FontAwesomeIcon icon={faDocker} className="xmb-icon justify-self-center fill-white accent-white" />
 );
 export const git: ReactElement = (
-    <FontAwesomeIcon icon={faGit} className="xmb-icon fill-white accent-white" />
+    <FontAwesomeIcon icon={faGit} className="xmb-icon justify-self-center fill-white accent-white" />
 );
 export const xTwitter: ReactElement = (
-    <FontAwesomeIcon icon={faXTwitter} className="xmb-icon" />
+    <FontAwesomeIcon icon={faXTwitter} className="xmb-icon justify-self-center" />
 );
 export const snapchat: ReactElement = (
-    <FontAwesomeIcon icon={faSnapchat} className="xmb-icon" />
+    <FontAwesomeIcon icon={faSnapchat} className="xmb-icon justify-self-center" />
 );
 export const instagram: ReactElement = (
-    <FontAwesomeIcon icon={faInstagram} className="xmb-icon" />
+    <FontAwesomeIcon icon={faInstagram} className="xmb-icon justify-self-center" />
 );
 export const twitch: ReactElement = (
-    <FontAwesomeIcon icon={faTwitch} className="xmb-icon" />
+    <FontAwesomeIcon icon={faTwitch} className="xmb-icon justify-self-center" />
 );
 export const threads: ReactElement = (
-    <FontAwesomeIcon icon={faThreads} className="xmb-icon" />
+    <FontAwesomeIcon icon={faThreads} className="xmb-icon justify-self-center" />
 );
 export const telegram: ReactElement = (
-    <FontAwesomeIcon icon={faTelegram} className="xmb-icon"  />
+    <FontAwesomeIcon icon={faTelegram} className="xmb-icon justify-self-center"  />
 );
 export const home: ReactElement = (
-    <Image src={homeIcon} className="xmb-icon" alt="home icon" />
+    <Image src={homeIcon} className="xmb-icon justify-self-center" alt="home icon" />
 );
 export const display: ReactElement = (
-    <Image src={displayIcon} className="xmb-icon" alt="display icon" />
+    <Image src={displayIcon} className="xmb-icon justify-self-center" alt="display icon" />
 );
 export const games: ReactElement = (
-    <Image src={gamesIcon} className="xmb-icon" alt="games icon" />
+    <Image src={gamesIcon} className="xmb-icon justify-self-center" alt="games icon" />
 );
 export const gow3: ReactElement = (
-    <Image src={gow3Icon} className="xmb-icon" alt="gow3 icon" />
+    <Image src={gow3Icon} className="xmb-icon justify-self-center" alt="gow3 icon" />
 );
 export const info: ReactElement = (
-    <FontAwesomeIcon icon={faInfoCircle} className="xmb-icon"  />
+    <FontAwesomeIcon icon={faInfoCircle} className="xmb-icon justify-self-center"  />
 );
 export const music: ReactElement = (
-    <Image src={musicIcon} className="xmb-icon" alt="music icon" />
+    <Image src={musicIcon} className="xmb-icon justify-self-center" alt="music icon" />
 );
 export const photo: ReactElement = (
-    <Image src={photoIcon} className="xmb-icon" alt="photo icon" />
+    <Image src={photoIcon} className="xmb-icon justify-self-center" alt="photo icon" />
 );
 export const prime: ReactElement = (
-    <Image src={primeIcon} className="xmb-icon" alt="prime icon" />
+    <Image src={primeIcon} className="xmb-icon justify-self-center" alt="prime icon" />
 );
 export const resume: ReactElement = (
-    <Image src={resumeIcon} className="xmb-icon" alt="resume icon" />
+    <Image src={resumeIcon} className="xmb-icon justify-self-center" alt="resume icon" />
 );
 export const settings: ReactElement = (
-    <Image src={settingsIcon} className="xmb-icon" alt="settings icon" />
+    <Image src={settingsIcon} className="xmb-icon justify-self-center" alt="settings icon" />
 );
 export const uncharted: ReactElement = (
-    <Image src={unchartedIcon} className="xmb-icon" alt="uncharted icon" />
+    <Image src={unchartedIcon} className="xmb-icon justify-self-center" alt="uncharted icon" />
 );
 export const update: ReactElement = (
-    <Image src={updateIcon} className="xmb-icon" alt="update icon" />
+    <Image src={updateIcon} className="xmb-icon justify-self-center" alt="update icon" />
 );
 export const user: ReactElement = (
-    <Image src={userIcon} className="xmb-icon" alt="user icon" />
+    <Image src={userIcon} className="xmb-icon justify-self-center" alt="user icon" />
 );
 export const video: ReactElement = (
-    <Image src={videoIcon} className="xmb-icon" alt="video icon" />
+    <Image src={videoIcon} className="xmb-icon justify-self-center" alt="video icon" />
 );
 export const h3general: ReactElement = (
     <Image src={halo3generalBwIcon} className="h3-general" alt="h3 general icon" />
@@ -238,16 +238,16 @@ export const h3general: ReactElement = (
 export const trueachievements: ReactElement = (
     <Image
         src={trueachievementsIcon}
-        className="xmb-icon"
+        className="xmb-icon justify-self-center"
         alt="trueachievements icon"
     />
 );
 export const exophase: ReactElement = (
-    <Image src={exophaseIcon} className="xmb-icon" alt="exophase icon" />
+    <Image src={exophaseIcon} className="xmb-icon justify-self-center" alt="exophase icon" />
 );
 export const choco: ReactElement = (
-    <Image src={chocoIcon} className="xmb-icon" alt="choco icon" />
+    <Image src={chocoIcon} className="xmb-icon justify-self-center" alt="choco icon" />
 );
 export const nuget: ReactElement = (
-    <Image src={nugetIcon} className="xmb-icon" alt="nuget icon" />
+    <Image src={nugetIcon} className="xmb-icon justify-self-center" alt="nuget icon" />
 );

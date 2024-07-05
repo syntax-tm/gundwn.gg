@@ -52,7 +52,7 @@ function buildGamingCategory(): XmbCategory {
         new XmbItem("xbox", "Xbox", icons.xbox, 'http://live.xbox.com/Profile?Gamertag=gundwn'),
         //new XmbItem("battlenet", "Battle.net", icons.battleNet, 'Gundwn#11586'),
         new XmbItem("exophase", "Exophase", icons.exophase, 'https://www.exophase.com/user/Gundwn/'),
-        //new XmbItem("trueachievements", "TrueAchievements", icons.trueachievements),
+        new XmbItem("trueachievements", "TrueAchievements", icons.trueachievements),
         new XmbItem("twitch", "Twitch", icons.twitch, 'https://twitch.tv/Gundwn'),
     ];
     const category: XmbCategory = new XmbCategory(2, "Gaming", icons.games, items);

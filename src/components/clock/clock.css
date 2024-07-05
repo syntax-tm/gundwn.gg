@@ -2,22 +2,21 @@
   opacity: 1;
   position: absolute;
   top: 5%;
-  left: 80%;
-  bottom: 0;
   right: 0;
-  width: 5%;
+  width: auto;
   color: white;
   text-align: right;
   font-size: 18px;
-  z-index: 3;
+  z-index: 101;
 }
 
 .clock .clock-container {
-  width: 400%;
+  width: auto;
   border: 1px solid #dadada;
   border-right: none;
   border-radius: 3px;
-  padding-right: 0px 40px;
+  padding: 5px 40px 5px 20px;
+  z-index: 100;
 }
 
 .clock .clock-container p {

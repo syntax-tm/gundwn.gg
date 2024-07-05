@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media only screen and (min-width : 320px) and (max-width: 640px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 30%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-category {
+    margin-left: 20px;
+    width: 120px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-icon {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media only screen and (min-width: 641px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 14%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-category {
+    margin-left: 150px;
+    width: 120px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    scale: 0.8;
+  }
+}
+
+/* .xmb-category.active {
+  background-color: #47d7f175;
+}
+
+.xmb-item.active {
+  background-color: #7cf16d67;
+} */
+
+
+
+.xmb-item.active > .xmb-icon {
+  scale: 1.1;
+}
+
+.xmb-item.active > .xmb-item-name {
+  left: 20px;
+}
+
+.xmb-item {
+  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.xmb-item-name {
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.xmb-item.active .xmb-item-name {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+          animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #acacac, 0 0 2px #8a8a8a, 0 0 2px #747474, 0 0 5px #525252;
+  }
+  to {
+    text-shadow: 0 0 5px #e0e0e0, 0 0 8px #cccccc, 0 0 15px #aaaaaa, 0 0 20px #929292;
+  }
+}
+
+p {
+  text-shadow: 2px 2px 5px black;
+  display: block;
+  color: #eee;
+}
