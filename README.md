@@ -1,20 +1,16 @@
 # Gundwn.gg
 
+## Preview
+
 <p align="center">
-  <img src="https://i.imgur.com/Bs08dJ9.gif" />
+  <img src="docs/preview.webp" alt="Preview" />
 </p>
 
-## 🚀 Welcome to your new awesome project!
+## Building
 
 This project has been created using **webpack-cli**, you can now run
 
-```
-npm run build
-```
-
-or
-
-```
+```sh
 yarn build
 ```
 
