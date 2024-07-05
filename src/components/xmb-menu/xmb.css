@@ -38,9 +38,10 @@ body {
   .xmb-icon {
     width: 80px;
     height: 80px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
   }
 
   img, svg {
@@ -64,6 +65,7 @@ body {
     color: #dadada;
     transition: margin-right 300ms, margin-left 300ms;
     z-index: -2;
+    position: absolute;
     /* overflow: hidden; */
   }
 
@@ -87,6 +89,7 @@ body {
     color: white;
     scale: 0.8;
   }
+
 }
 
 /* .xmb-category.active {
@@ -97,10 +100,8 @@ body {
   background-color: #7cf16d67;
 } */
 
-
-
 .xmb-item.active > .xmb-icon {
-  scale: 1.1;
+  scale: 1.05;
 }
 
 .xmb-item.active > .xmb-item-name {
@@ -113,7 +114,7 @@ body {
 
 .xmb-item-name {
   font-size: 1.5rem;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .xmb-item.active .xmb-item-name {

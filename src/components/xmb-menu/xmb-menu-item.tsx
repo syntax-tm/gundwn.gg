@@ -44,7 +44,7 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
     <>
       <a
         id={item.id}
-        className={`xmb-item flex items-center justify-self-center ${active ? "active" : "inactive"} ${index === 0 ? "first" : ""}`}
+        className={`xmb-item flex items-center justify-self-center select-none ${active ? "active" : "inactive"} ${index === 0 ? "first" : ""}`}
         style={styleProps}
         href={item.link || ""}
         onClick={(e) => {
@@ -54,12 +54,12 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
         }}
         target="_blank">
         {item.icon}
-        <div className="pl-[20px] grid grid-cols-1 gap-4 content-around">
-          <p className="xmb-item-name text-nowrap">
+        <div className="grid grid-cols-1 gap-4 content-around select-none">
+          <p className="xmb-item-name text-nowrap select-none">
             {item.title}
           </p>
           {item.description && (
-            <p className="xmb-item-caption text-nowrap">
+            <p className="xmb-item-caption text-nowrap select-none">
               {item.description}
             </p>
           )}

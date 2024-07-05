@@ -21,16 +21,16 @@ export const MenuCategory = ({ index, category, x, y }: MenuCategoryProps) => {
     <>
       <div id={category.title} className={`xmb-category ${ active ? 'active' : 'inactive' }`}
       >
-        <div className="xmb-category-header grid">
+        <div className="xmb-category-header grid select-none">
           {category.icon}
           {active && (
-            <p className="xmb-category-title">
+            <p className="xmb-category-title select-none">
               {category.title}
             </p>
           )}
         </div>
         {active && (
-          <div className="xmb-category-items">
+          <div className="xmb-category-items select-none">
             {category.items !== undefined &&
               category.items.length > 0 &&
               category.items.map((item, i) => (

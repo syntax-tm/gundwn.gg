@@ -33,7 +33,7 @@ function buildDevCategory(): XmbCategory {
         //new XmbItem("choco", "Chocolatey", icons.choco, 'https://community.chocolatey.org/profiles/syntax-tm'),
         //new XmbItem("nuget", "Nuget.org", icons.nuget, 'https://www.nuget.org/profiles/syntax-tm'),
         //new XmbItem("myget", "MyGet", icons.boxes, 'https://www.myget.org/users/syntax-tm'),
-        new XmbItem("dockerhub", "DockerHub", icons.docker, 'https://hub.docker.com/u/syntaxtm'),
+        //new XmbItem("dockerhub", "DockerHub", icons.docker, 'https://hub.docker.com/u/syntaxtm'),
         new XmbItem("stackoverflow", "StackOverflow", icons.stackOverflow, 'https://stackoverflow.com/users/6823084/trey'),
     ];
     const category: XmbCategory = new XmbCategory(1, "Dev", icons.code, items);
@@ -47,12 +47,12 @@ function buildGamingCategory(): XmbCategory {
 
     const items: XmbItem[] = [
         src,
-        //new XmbItem("youtube", "YouTube", icons.youtube),
-        //new XmbItem("steam", "Steam", icons.steam, 'https://s.team/p/dwq-wrkt'),
+        new XmbItem("youtube", "YouTube", icons.youtube, 'https://youtube.com/@gundwn'),
+        new XmbItem("steam", "Steam", icons.steam, 'https://s.team/p/dwq-wrkt'),
         new XmbItem("xbox", "Xbox", icons.xbox, 'http://live.xbox.com/Profile?Gamertag=gundwn'),
         //new XmbItem("battlenet", "Battle.net", icons.battleNet, 'Gundwn#11586'),
         new XmbItem("exophase", "Exophase", icons.exophase, 'https://www.exophase.com/user/Gundwn/'),
-        new XmbItem("trueachievements", "TrueAchievements", icons.trueachievements),
+        new XmbItem("trueachievements", "TrueAchievements", icons.trueachievements, 'https://www.trueachievements.com/gamer/Gundwn'),
         new XmbItem("twitch", "Twitch", icons.twitch, 'https://twitch.tv/Gundwn'),
     ];
     const category: XmbCategory = new XmbCategory(2, "Gaming", icons.games, items);
@@ -66,13 +66,13 @@ function buildSocialCategory(): XmbCategory {
 
     const items: XmbItem[] = [
         discord,
-        //new XmbItem("youtube", "YouTube", icons.youtube, 'https://www.youtube.com/@Gundwn'),
-        //new XmbItem("facebook", "Facebook", icons.facebook, 'https://www.facebook.com/gundwnsrc'),
+        new XmbItem("youtube", "YouTube", icons.youtube, 'https://www.youtube.com/@Gundwn'),
+        new XmbItem("facebook", "Facebook", icons.facebook, 'https://www.facebook.com/gundwnsrc'),
         new XmbItem("instagram", "Instagram", icons.instagram, 'https://instagram.com/GundwnSRC'),
         //new XmbItem("x", "X", icons.xTwitter, 'https://x.com/gundwnsrc'),
         //XmbItem.create("snapchat", "Snapchat", icons.snapchat, () => { alert(''); }),
         new XmbItem("spotify", "Spotify", icons.spotify, 'https://open.spotify.com/user/1280499465'),
-        new XmbItem("stats.fm", "Stats.fm", icons.chart, 'https://stats.fm/gundwn'),
+        new XmbItem("stats.fm", "Stats.fm", icons.statsFm, 'https://stats.fm/gundwn'),
         //new XmbItem("telegram", "Telegram", icons.telegram, 'https://t.me/Gundwn')
     ];
     const category: XmbCategory = new XmbCategory(3, "Social", icons.user, items);
