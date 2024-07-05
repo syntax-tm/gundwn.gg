@@ -33,7 +33,7 @@ function buildDevCategory(): XmbCategory {
         //new XmbItem("choco", "Chocolatey", icons.choco, 'https://community.chocolatey.org/profiles/syntax-tm'),
         //new XmbItem("nuget", "Nuget.org", icons.nuget, 'https://www.nuget.org/profiles/syntax-tm'),
         //new XmbItem("myget", "MyGet", icons.boxes, 'https://www.myget.org/users/syntax-tm'),
-        //new XmbItem("dockerhub", "DockerHub", icons.docker, 'https://hub.docker.com/u/syntaxtm'),
+        new XmbItem("dockerhub", "DockerHub", icons.docker, 'https://hub.docker.com/u/syntaxtm'),
         new XmbItem("stackoverflow", "StackOverflow", icons.stackOverflow, 'https://stackoverflow.com/users/6823084/trey'),
     ];
     const category: XmbCategory = new XmbCategory(1, "Dev", icons.code, items);
@@ -69,7 +69,7 @@ function buildSocialCategory(): XmbCategory {
         new XmbItem("youtube", "YouTube", icons.youtube, 'https://www.youtube.com/@Gundwn'),
         new XmbItem("facebook", "Facebook", icons.facebook, 'https://www.facebook.com/gundwnsrc'),
         new XmbItem("instagram", "Instagram", icons.instagram, 'https://instagram.com/GundwnSRC'),
-        //new XmbItem("x", "X", icons.xTwitter, 'https://x.com/gundwnsrc'),
+        new XmbItem("x", "X", icons.xTwitter, 'https://x.com/gundwnsrc'),
         //XmbItem.create("snapchat", "Snapchat", icons.snapchat, () => { alert(''); }),
         new XmbItem("spotify", "Spotify", icons.spotify, 'https://open.spotify.com/user/1280499465'),
         new XmbItem("stats.fm", "Stats.fm", icons.statsFm, 'https://stats.fm/gundwn'),
@@ -81,10 +81,15 @@ function buildSocialCategory(): XmbCategory {
 }
 
 function buildSettingsCategory(): XmbCategory {
-    const update = XmbItem.create("update", "Update", icons.update, () => { alert('update'); });
-    update.setActive();
+    const viewSource = new XmbItem("viewSource", "Source", icons.git, 'https://github.com/syntax-tm/gundwn.gg');
+    viewSource.setActive();
 
-    const items: XmbItem[] = [update];
+    const items: XmbItem[] = [
+      viewSource,
+      new XmbItem("fork", "Fork", icons.codeFork, 'https://github.com/syntax-tm/gundwn.gg/fork'),
+      new XmbItem("nextjs", "Next.js", icons.nextJs, 'https://nextjs.org/'),
+      new XmbItem("fa", "FontAwesome", icons.fontAwesome, 'https://fontawesome.com/')
+    ];
     const category: XmbCategory = new XmbCategory(
         4,
         "Settings",
