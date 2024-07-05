@@ -117,10 +117,10 @@ export default function Menu() {
   useWheel(wheelInput);
 
   const swipeInput = {
-    onSwipedUp: onUp,
-    onSwipedDown: onDown,
-    onSwipedLeft: onLeft,
-    onSwipedRight: onRight,
+    onSwipedUp: onDown,
+    onSwipedDown: onUp,
+    onSwipedLeft: onRight,
+    onSwipedRight: onLeft,
   };
 
   useSwipe(swipeInput);
