@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useRef, useState, ReactNode, useEffect, Dispatch, SetStateAction, CSSProperties } from "react";
+import { useRef, useState, CSSProperties } from "react";
 import { XmbMenu, XmbCategory, XmbItem } from "@models/menu";
+import { useSearchParams, useRouter } from "next/navigation";
 import build from "@services/menuBuilder";
 import Title from "@components/title/title";
 import "./xmb.css";
 import useWheel, { WheelInput } from "@/hooks/useWheel";
-import useKeyboard, { KeyPressAction } from "@/hooks/useKeyboard";
-import useSwipe from "@/hooks/useSwipe";
+import useKeyboard, { KeyboardInput, KeyPressAction } from "@/hooks/useKeyboard";
+import useSwipe, { SwipeInput } from "@/hooks/useSwipe";
 import useMobileDetect from "@/hooks/useMobileDetect";
 import { MenuCategory } from "./xmb-menu-category";
 
@@ -18,6 +19,10 @@ export default function Menu() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const searchParams = useSearchParams();
+  const currentModal = searchParams.get("modal");
+  const modalOpen = !!currentModal;
+  const router = useRouter();
 
   const currentDevice = useMobileDetect();
 
@@ -45,11 +50,22 @@ export default function Menu() {
     setY(0);
   }
 
+  function onHelp() {
+    play();
+
+    router.push('/?modal=help');
+  }
+
   function onEnter() {
     play();
 
     let selectedCategory = config.getCurrentCategory();
     let selectedItem = selectedCategory.getCurrentItem();
+
+    if (selectedItem.modal) {
+      router.push(`/?modal=${selectedItem.modal}`);
+      return;
+    }
 
     if (selectedItem.link !== null) {
       openInNewTab(selectedItem.link);
@@ -93,6 +109,7 @@ export default function Menu() {
   }
 
   const actions = new Map<string, KeyPressAction>();
+
   actions.set('w', { repeat: true, onKeyPress: onUp });
   actions.set('arrowup', { repeat: true, onKeyPress: onUp });
   actions.set('a', { repeat: true, onKeyPress: onLeft });
@@ -104,41 +121,46 @@ export default function Menu() {
   actions.set(' ', { repeat: false, onKeyPress: onEnter });
   actions.set('enter', { repeat: false, onKeyPress: onEnter });
   actions.set('escape', { repeat: false, onKeyPress: onEsc });
+  actions.set('h', { repeat: false, onKeyPress: onHelp });
+  actions.set('f1', { repeat: false, onKeyPress: onHelp });
 
-  useKeyboard({ actions: actions });
+  const keyboardInput: KeyboardInput = {
+    actions: actions,
+    enabled: !modalOpen
+  };
 
-  const wheelInput = {
+  useKeyboard(keyboardInput);
+
+  const wheelInput: WheelInput = {
     onWheelUp: onUp,
     onWheelDown: onDown,
     onWheelLeft: onLeft,
-    onWheelRight: onRight
+    onWheelRight: onRight,
+    enabled: !modalOpen
   };
 
   useWheel(wheelInput);
 
-  const swipeInput = {
+  const swipeInput: SwipeInput = {
     onSwipedUp: onDown,
     onSwipedDown: onUp,
     onSwipedLeft: onRight,
     onSwipedRight: onLeft,
+    enabled: !modalOpen
   };
-
   useSwipe(swipeInput);
 
   const isMobile = currentDevice.isMobile();
-  const isSSR = !currentDevice.isSSR();
 
   const scaleX = isMobile ? 140 : 270;
   const baseMarginLeft = isMobile ? 20 : 100;
 
-  const w = 0;
-  const l = baseMarginLeft - (scaleX * x);
-
-  console.log(`${isMobile}: scaleX: ${scaleX} baseMarginLeft: ${baseMarginLeft} marginLeft: ${l}px`);
+  const mr = 0;
+  const ml = baseMarginLeft - (scaleX * x);
 
   const mainStyle:CSSProperties = {
-    marginRight: `${w}%`,
-    marginLeft: `${l}px`,
+    marginRight: `${mr}%`,
+    marginLeft: `${ml}px`,
     width: '200%',
     display: 'flex',
   };

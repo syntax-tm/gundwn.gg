@@ -1,0 +1,9 @@
+.modal-title {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+kbd svg {
+  height: 12px !important;
+  width: 12px !important;
+}

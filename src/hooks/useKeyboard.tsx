@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+'use client'
+
+import { useCallback, useEffect, useState } from "react";
 
 export interface KeyPressAction {
     repeat: boolean;
@@ -7,6 +9,7 @@ export interface KeyPressAction {
 
 export interface KeyboardInput {
     actions: Map<string, KeyPressAction>;
+    enabled: boolean;
 }
 
 export interface KeyboardOutput {
@@ -18,17 +21,18 @@ let addedListeners = false;
 
 const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
     const [keysDown, setKeysDown] = useState<string[]>([]);
+    //const [enabled, setEnabled] = useState<boolean>(input.enabled);
 
-    const isMapped = (key: string): boolean => {
+    const isMapped = useCallback((key: string): boolean => {
       return input.actions.has(key.toLowerCase());
-    }
+    }, [input.actions]);
 
-    const handleKeyUp = (e: KeyboardEvent): void => {
+    const handleKeyUp = useCallback((e: KeyboardEvent): void => {
       const updated = keysDown.filter((i) => i !== e.key);
       setKeysDown(updated);
-    };
+    }, [keysDown, setKeysDown]);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
       // key is not mapped, ignore
       if (!isMapped(e.key)) return;
 
@@ -46,7 +50,7 @@ const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
       action.onKeyPress();
 
       setKeysDown((prevState) => [...prevState, e.key]);
-    };
+    }, [input.actions, isMapped]);
 
     useEffect(() => {
       if (addedListeners) {
@@ -62,7 +66,7 @@ const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
         document.body.removeEventListener('keydown', handleKeyDown);
         document.body.removeEventListener('keyup', handleKeyUp);
       }
-    }, []);
+    }, [handleKeyUp, handleKeyDown]);
 
     return {
       onKeyDown: handleKeyDown,

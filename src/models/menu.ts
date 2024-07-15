@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 
-
 export interface IXmbMenu {
   items: IXmbCategory[];
   readonly [index: number]: IXmbCategory;
@@ -24,6 +23,7 @@ export interface IXmbItem {
   shortDescription?: string;
   category?: string;
   shortCategory?: string;
+  modal: string | null;
 }
 
 export class XmbItem implements IXmbItem {
@@ -38,6 +38,7 @@ export class XmbItem implements IXmbItem {
   shortCategory?: string = '';
   isActive: boolean = false;
   visible: boolean = true;
+  modal: string | null = '';
   onClick: null | (() => void) = null;
 
   constructor(id: string = '', title: string = '', icon: ReactElement | null = null, link: string | null = null, description: string | null = null) {
@@ -52,6 +53,13 @@ export class XmbItem implements IXmbItem {
   {
       let item = new XmbItem(id, title, icon);
       item.onClick = onClick;
+      return item;
+  }
+
+  static createModal(id: string = '', title: string = '', icon: ReactElement | null, modal: string | null): XmbItem
+  {
+      let item = new XmbItem(id, title, icon);
+      item.modal = modal;
       return item;
   }
 

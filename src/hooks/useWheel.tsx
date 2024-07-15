@@ -1,19 +1,18 @@
 import { useEffect, useRef } from "react";
 
 export interface WheelInput {
-  onWheelUp: () => void
-  onWheelDown: () => void
-  onWheelLeft: () => void
-  onWheelRight: () => void
+  onWheelUp: () => void;
+  onWheelDown: () => void;
+  onWheelLeft: () => void;
+  onWheelRight: () => void;
+  enabled: boolean;
 }
 
 export interface WheelOutput {
-  onWheel: (e: WheelEvent) => void
-  onKeyUp: (e: KeyboardEvent) => void
-  onKeyDown: (e: KeyboardEvent) => void
+  onWheel: (e: WheelEvent) => void;
+  onKeyUp: (e: KeyboardEvent) => void;
+  onKeyDown: (e: KeyboardEvent) => void;
 }
-
-let addedListeners = false;
 
 const useWheel = (input: WheelInput): WheelOutput => {
 
@@ -21,7 +20,6 @@ const useWheel = (input: WheelInput): WheelOutput => {
 
   const onWheel = (e: WheelEvent) => {
     let down = e.deltaY > 0;
-
     if (down) {
       if (shift.current) {
         input.onWheelRight();
@@ -30,12 +28,10 @@ const useWheel = (input: WheelInput): WheelOutput => {
       input.onWheelDown();
       return;
     }
-
     if (shift.current) {
       input.onWheelLeft();
       return;
     }
-
     input.onWheelUp();
   };
 

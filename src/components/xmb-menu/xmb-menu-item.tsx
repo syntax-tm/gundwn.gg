@@ -3,7 +3,9 @@
 
 import { CSSProperties } from "react";
 import { XmbItem } from "@models/menu";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import "./xmb.css";
+import Link from "next/link";
 
 interface MenuItemProps {
   index: number;
@@ -13,6 +15,7 @@ interface MenuItemProps {
 
 export const MenuItem = ({ index, item, y }: MenuItemProps) => {
   const active = index === y;
+  const router = useRouter();
 
   let top = 0;
   let bottom = 0;
@@ -42,29 +45,34 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
 
   return (
     <>
-      <a
+      <Link
         id={item.id}
         className={`xmb-item flex items-center justify-self-center select-none ${active ? "active" : "inactive"} ${index === 0 ? "first" : ""}`}
         style={styleProps}
         href={item.link || ""}
         onClick={(e) => {
           if (item === null) return;
+          if (item.modal) {
+            e.preventDefault();
+            router.push(`/?modal=${item.modal}`);
+            return;
+          }
           if (item.onClick === null) return;
           item.onClick!();
         }}
-        target="_blank">
+        target={item.link && "_blank" || undefined}>
         {item.icon}
-        <div className="grid grid-cols-1 gap-4 content-around select-none">
+        <div className="grid grid-cols-1 content-around select-none">
           <p className="xmb-item-name text-nowrap select-none">
             {item.title}
           </p>
           {item.description && (
-            <p className="xmb-item-caption text-nowrap select-none">
+            <p className="xmb-item-description text-nowrap select-none">
               {item.description}
             </p>
           )}
         </div>
-      </a>
+      </Link>
     </>
   );
 };
