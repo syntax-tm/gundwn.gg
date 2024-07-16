@@ -7,7 +7,7 @@ function buildHomeCategory(): XmbCategory {
     welcome.setActive();
 
     const help = XmbItem.createModal("help", "Help", icons.info, 'help');
-    help.description = "View the help information";
+    help.description = "Display the help screen";
 
     const contact = new XmbItem("contact", "Contact", icons.message, 'mailto:info@test.com');
     contact.description = 'Send a message';
@@ -82,7 +82,7 @@ function buildGamingCategory(): XmbCategory {
     ta.description = 'View TrueAchievements profile';
 
     const ttv = new XmbItem("twitch", "Twitch", icons.twitch, 'https://twitch.tv/Gundwn');
-    ta.description = 'View Twitch.tv profile';
+    ttv.description = 'View Twitch.tv profile';
 
     const items: XmbItem[] = [
         src,
@@ -119,7 +119,7 @@ function buildSocialCategory(): XmbCategory {
     spotify.description = 'View Spotify profile';
 
     const stats = new XmbItem("stats.fm", "Stats.fm", icons.statsFm, 'https://stats.fm/gundwn');
-    spotify.description = 'View stats.fm profile';
+    stats.description = 'View stats.fm profile';
 
     const items: XmbItem[] = [
         discord,

@@ -1,6 +1,8 @@
 'use client'
 
+import { ReadonlyURLSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import useQuery from "./useQuery";
 
 export interface KeyPressAction {
     repeat: boolean;
@@ -9,7 +11,7 @@ export interface KeyPressAction {
 
 export interface KeyboardInput {
     actions: Map<string, KeyPressAction>;
-    enabled: boolean;
+    enabledOnModal: boolean | undefined;
 }
 
 export interface KeyboardOutput {
@@ -17,15 +19,26 @@ export interface KeyboardOutput {
     onKeyDown: (e: KeyboardEvent) => void;
 }
 
-let addedListeners = false;
-
-const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
+const useKeyboard = ({ actions, enabledOnModal = false }: KeyboardInput): KeyboardOutput => {
     const [keysDown, setKeysDown] = useState<string[]>([]);
+    //const [listenersAdded, setListenersAdded] = useState<boolean>(false);
     //const [enabled, setEnabled] = useState<boolean>(input.enabled);
 
+    //const [path, setPath] = useState('');
+    //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
+    const [modal, setModal] = useState<boolean>(false);
+
+    function onPathChanged(p: string, s: ReadonlyURLSearchParams, m: string | null) {
+      //setPath(p);
+      //setSearchParams(s);
+      setModal(!!m);
+    }
+  
+    useQuery({ onPathChanged: onPathChanged });
+  
     const isMapped = useCallback((key: string): boolean => {
-      return input.actions.has(key.toLowerCase());
-    }, [input.actions]);
+      return actions.has(key.toLowerCase());
+    }, [actions]);
 
     const handleKeyUp = useCallback((e: KeyboardEvent): void => {
       const updated = keysDown.filter((i) => i !== e.key);
@@ -37,7 +50,7 @@ const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
       if (!isMapped(e.key)) return;
 
       // key is mapped, so retrieve the KeyPressAction
-      const action = input.actions.get(e.key.toLowerCase());
+      const action = actions.get(e.key.toLowerCase());
 
       // TODO: this should throw an error
       if (action === undefined) return;
@@ -50,23 +63,19 @@ const useKeyboard = (input: KeyboardInput): KeyboardOutput => {
       action.onKeyPress();
 
       setKeysDown((prevState) => [...prevState, e.key]);
-    }, [input.actions, isMapped]);
+    }, [actions, isMapped]);
 
     useEffect(() => {
-      if (addedListeners) {
-        return;
-      }
+      if (modal && !enabledOnModal) return;
 
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('keyup', handleKeyUp);
-
-      addedListeners = true;
+      document.body.addEventListener('keydown', handleKeyDown);
+      document.body.addEventListener('keyup', handleKeyUp);
 
       return () => {
         document.body.removeEventListener('keydown', handleKeyDown);
         document.body.removeEventListener('keyup', handleKeyUp);
       }
-    }, [handleKeyUp, handleKeyDown]);
+    }, [handleKeyUp, handleKeyDown, modal, enabledOnModal]);
 
     return {
       onKeyDown: handleKeyDown,

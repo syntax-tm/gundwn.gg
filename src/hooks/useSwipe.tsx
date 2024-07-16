@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { ReadonlyURLSearchParams } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import useQuery from "./useQuery";
 
 export interface SwipeInput {
   onSwipedUp: () => void;
   onSwipedDown: () => void;
   onSwipedLeft: () => void;
   onSwipedRight: () => void;
-  enabled: boolean;
+  enabledOnModal: boolean;
 }
 
 interface SwipeOutput {
@@ -24,21 +26,33 @@ const useSwipe = (input: SwipeInput): SwipeOutput => {
 
   const minSwipeDistance = 50;
 
-  const onTouchStart = (e: TouchEvent) => {
+  const onTouchStart = useCallback((e: TouchEvent) => {
     //console.log(`onTouchStart: ${e}`);
     touchStartX.current = e.targetTouches[0].clientX;
     touchEndX.current = e.targetTouches[0].clientX; // otherwise the swipe is fired even with usual touch events
     touchStartY.current = e.targetTouches[0].clientY;
     touchEndY.current = e.targetTouches[0].clientY; // otherwise the swipe is fired even with usual touch events
-  }
+  }, [touchStartX, touchEndX, touchStartY, touchEndY]);
 
-  const onTouchMove = (e: TouchEvent) => {
+  //const [path, setPath] = useState('');
+  //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
+  const [modal, setModal] = useState<boolean>(false);
+
+  const onPathChanged = (p: string, s: ReadonlyURLSearchParams, m: string | null) => {
+    //setPath(p);
+    //setSearchParams(s);
+    setModal(!!m);
+  };
+
+  useQuery({ onPathChanged: onPathChanged });
+  
+  const onTouchMove = useCallback((e: TouchEvent) => {
     //console.log(`onTouchMove: ${e}`);
     touchEndX.current = e.targetTouches[0].clientX;
     touchEndY.current = e.targetTouches[0].clientY;
-  }
+  }, [touchEndX, touchEndY]);
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     //console.log('onTouchEnd');
 
     if (!touchStartX || !touchEndX) return;
@@ -86,18 +100,19 @@ const useSwipe = (input: SwipeInput): SwipeOutput => {
     if (isRightSwipe) {
       input.onSwipedRight();
     }
-  }
+  }, [input]);
 
   useEffect(() => {
-    document.addEventListener('touchstart', onTouchStart);
-    document.addEventListener('touchend', onTouchEnd);
-    document.addEventListener('touchmove', onTouchMove);
+    if (modal !== input.enabledOnModal) return;
+    document.body.addEventListener('touchstart', onTouchStart);
+    document.body.addEventListener('touchend', onTouchEnd);
+    document.body.addEventListener('touchmove', onTouchMove);
     return () => {
-      document.removeEventListener('touchstart', onTouchStart);
-      document.removeEventListener('touchend', onTouchEnd);
-      document.removeEventListener('touchmove', onTouchMove);
+      document.body.removeEventListener('touchstart', onTouchStart);
+      document.body.removeEventListener('touchend', onTouchEnd);
+      document.body.removeEventListener('touchmove', onTouchMove);
     }
-  }, []);
+  }, [modal, input.enabledOnModal, onTouchStart, onTouchEnd, onTouchMove]);
 
   return {
     onTouchStart,

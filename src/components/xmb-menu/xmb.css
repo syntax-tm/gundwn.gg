@@ -15,45 +15,7 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (min-width : 320px) and (max-width: 640px) {
-
-  .xmb-main {
-    display: flex;
-    justify-content: start;
-    text-align: center;
-    margin-top: 30%;
-    color: #dadada;
-    transition: margin-right 300ms, margin-left 300ms;
-    z-index: -2;
-    /* overflow: hidden; */
-  }
-
-  .xmb-category {
-    margin-left: 20px;
-    width: 120px;
-    justify-content: center;
-    display: grid;
-  }
-
-  .xmb-icon {
-    width: 80px;
-    height: 80px;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-  }
-
-  img, svg {
-    filter: drop-shadow(0 0 0.25rem black);
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    z-index: 2;
-    color: white;
-    width: 80px;
-    height: 80px;
-  }
-}
+/* TODO: clean up media queries and breakpoints for xmb menu */
 
 @media only screen and (min-width: 641px) {
 
@@ -76,6 +38,10 @@ body {
     display: grid;
   }
 
+  .xmb-item {
+    margin-left: 20px;
+  }
+
   .xmb-icon {
     width: 100px;
     height: 100px;
@@ -89,7 +55,182 @@ body {
     color: white;
     scale: 0.8;
   }
+}
 
+@media only screen and (max-width: 319px) and (max-width: 639px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 30%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-category {
+    margin-left: 10px;
+    width: 130px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-item {
+    margin-left: 20px;
+  }
+
+  .xmb-category-header > .icon {
+    overflow: visible;
+  }
+
+  .xmb-category-items .xmb-icon {
+    margin-left: 30px;
+  }
+
+  .xmb-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media only screen and (min-width : 320px) and (max-width: 999px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 30%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-category {
+    margin-left: 20px;
+    width: 120px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-icon {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media only screen and (min-height: 400px) and (max-height: 1200px) and (max-width: 640px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 30%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-item {
+    margin-left: 20px;
+  }
+
+  .xmb-category {
+    margin-left: 20px;
+    width: 120px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-icon {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media only screen and (min-aspect-ratio : 5/4) and (max-height: 600px) {
+
+  .xmb-main {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    margin-top: 10%;
+    color: #dadada;
+    transition: margin-right 300ms, margin-left 300ms;
+    z-index: -2;
+    /* overflow: hidden; */
+  }
+
+  .xmb-category {
+    margin-left: 20px;
+    width: 120px;
+    justify-content: center;
+    display: grid;
+  }
+
+  .xmb-icon {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  img, svg {
+    filter: drop-shadow(0 0 0.25rem black);
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    z-index: 2;
+    color: white;
+    width: 60px;
+    height: 60px;
+  }
 }
 
 /* .xmb-category.active {
@@ -114,11 +255,11 @@ body {
 
 .xmb-item-name {
   font-size: 1.5rem;
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .xmb-item-description {
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .xmb-item.active .xmb-item-name {

@@ -3,7 +3,7 @@
 
 import { useRef, useState, CSSProperties } from "react";
 import { XmbMenu, XmbCategory, XmbItem } from "@models/menu";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, ReadonlyURLSearchParams } from "next/navigation";
 import build from "@services/menuBuilder";
 import Title from "@components/title/title";
 import "./xmb.css";
@@ -12,6 +12,7 @@ import useKeyboard, { KeyboardInput, KeyPressAction } from "@/hooks/useKeyboard"
 import useSwipe, { SwipeInput } from "@/hooks/useSwipe";
 import useMobileDetect from "@/hooks/useMobileDetect";
 import { MenuCategory } from "./xmb-menu-category";
+import useQuery from "@/hooks/useQuery";
 
 const config: XmbMenu = build();
 
@@ -19,12 +20,13 @@ export default function Menu() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const searchParams = useSearchParams();
-  const currentModal = searchParams.get("modal");
-  const modalOpen = !!currentModal;
   const router = useRouter();
 
   const currentDevice = useMobileDetect();
+
+  //const [path, setPath] = useState('');
+  //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
+  const [modal, setModal] = useState<string | null>(null);
 
   const play = () => {
     if (audioRef.current) {
@@ -108,6 +110,14 @@ export default function Menu() {
     setY(position.y);
   }
 
+  function onPathChanged(path: string, searchParams: ReadonlyURLSearchParams, modal: string | null) {
+    //setPath(path);
+    //setSearchParams(searchParams);
+    setModal(modal);
+  }
+
+  useQuery({ onPathChanged: onPathChanged });
+  
   const actions = new Map<string, KeyPressAction>();
 
   actions.set('w', { repeat: true, onKeyPress: onUp });
@@ -125,8 +135,7 @@ export default function Menu() {
   actions.set('f1', { repeat: false, onKeyPress: onHelp });
 
   const keyboardInput: KeyboardInput = {
-    actions: actions,
-    enabled: !modalOpen
+    actions: actions
   };
 
   useKeyboard(keyboardInput);
@@ -136,7 +145,7 @@ export default function Menu() {
     onWheelDown: onDown,
     onWheelLeft: onLeft,
     onWheelRight: onRight,
-    enabled: !modalOpen
+    enabledOnModal: false
   };
 
   useWheel(wheelInput);
@@ -146,7 +155,7 @@ export default function Menu() {
     onSwipedDown: onUp,
     onSwipedLeft: onRight,
     onSwipedRight: onLeft,
-    enabled: !modalOpen
+    enabledOnModal: false
   };
   useSwipe(swipeInput);
 

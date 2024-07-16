@@ -1,11 +1,12 @@
 "use client";
 
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams, usePathname, useRouter, ReadonlyURLSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp, faAngleDown, faW, faA, faS, faD, faH } from '@fortawesome/free-solid-svg-icons';
 import useKeyboard, { KeyPressAction } from "@/hooks/useKeyboard";
+import useQuery from "@/hooks/useQuery";
 
 interface ModalProps {
   type: string;
@@ -13,10 +14,11 @@ interface ModalProps {
 
 export const HelpModal = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const searchParams = useSearchParams();
-  const modal = searchParams.get("modal");
-  const pathname = usePathname();
   const router = useRouter();
+
+  //const [path, setPath] = useState('');
+  //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
+  const [modal, setModal] = useState<string | null>('');
 
   const play = () => {
     if (audioRef.current) {
@@ -30,16 +32,24 @@ export const HelpModal = () => {
   function onEsc() {
     play();
 
-    router.push(pathname);
+    router.push('/');
   }
 
+  function onPathChanged(p: string, s: ReadonlyURLSearchParams, m: string | null) {
+    //setPath(p);
+    //setSearchParams(s);
+    setModal(m);
+  }
+
+  useQuery({ onPathChanged: onPathChanged });
+  
   const actions = new Map<string, KeyPressAction>();
 
   if (modal) {
     actions.set('escape', { repeat: false, onKeyPress: onEsc });
   }
 
-  useKeyboard({ actions: actions, enabled: true });
+  useKeyboard({ actions: actions, enabledOnModal: true });
 
   return (
     <>
@@ -218,8 +228,8 @@ export const HelpModal = () => {
           </div>
           <div className="absolute left-0 bottom-0 items-start w-full h-[15%] grid grid-cols-1 content-start">
             <hr className="w-full" />
-            <span className="text-white mt-[1em] ml-[0.5em] text-center">
-              <Link href={pathname}>
+            <span className="text-white mt-[1em] ml-[0.5em] text-center modal-action">
+              <Link href={'/'}>
               <kbd className="px-2 py-1.5 text-xs text-gray-800 bg-gray-100 mx-[3px] border border-gray-200 rounded-lg dark:bg-gray-400/25 dark:text-white dark:border-gray-500/25">Esc</kbd> close
               </Link>
             </span>
