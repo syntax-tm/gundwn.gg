@@ -39,12 +39,13 @@ body {
   }
 
   .xmb-item {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .xmb-icon {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
+    margin: 5px 5px;
     filter: drop-shadow(0 0 0.25rem black);
     overflow-clip-margin: content-box;
     overflow: clip;
