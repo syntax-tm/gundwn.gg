@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Background from '@/components/background/background';
-import { useSearchParams } from "next/navigation";
 import Clock from "@/components/clock/Clock";
 import dynamic from "next/dynamic";
 import { useRef, useState, ReactNode, useEffect, Dispatch, SetStateAction, CSSProperties } from "react";

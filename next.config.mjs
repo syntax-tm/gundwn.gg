@@ -27,6 +27,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // TODO: add missing Suspense and remove this suppression
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 export default nextConfig;
