@@ -21,16 +21,9 @@ export interface KeyboardOutput {
 
 const useKeyboard = ({ actions, enabledOnModal = false }: KeyboardInput): KeyboardOutput => {
     const [keysDown, setKeysDown] = useState<string[]>([]);
-    //const [listenersAdded, setListenersAdded] = useState<boolean>(false);
-    //const [enabled, setEnabled] = useState<boolean>(input.enabled);
-
-    //const [path, setPath] = useState('');
-    //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
     const [modal, setModal] = useState<boolean>(false);
 
     function onPathChanged(p: string, s: ReadonlyURLSearchParams, m: string | null) {
-      //setPath(p);
-      //setSearchParams(s);
       setModal(!!m);
     }
   

@@ -45,15 +45,12 @@ body {
   .xmb-icon {
     width: 100px;
     height: 100px;
-  }
-
-  img, svg {
     filter: drop-shadow(0 0 0.25rem black);
     overflow-clip-margin: content-box;
     overflow: clip;
     z-index: 2;
     color: white;
-    scale: 0.8;
+    /* scale: 0.8; */
   }
 }
 
@@ -90,22 +87,18 @@ body {
   }
 
   .xmb-icon {
-    width: 50px;
-    height: 50px;
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 20px;
-  }
-
-  img, svg {
+    width: 60px;
+    height: 60px;
     filter: drop-shadow(0 0 0.25rem black);
     overflow-clip-margin: content-box;
     overflow: clip;
     z-index: 2;
     color: white;
-    width: 60px;
-    height: 60px;
+    /* scale: 0.8; */
   }
 }
 
@@ -130,15 +123,6 @@ body {
   }
 
   .xmb-icon {
-    width: 80px;
-    height: 80px;
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
-  }
-
-  img, svg {
     filter: drop-shadow(0 0 0.25rem black);
     overflow-clip-margin: content-box;
     overflow: clip;
@@ -146,6 +130,10 @@ body {
     color: white;
     width: 80px;
     height: 80px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
   }
 }
 

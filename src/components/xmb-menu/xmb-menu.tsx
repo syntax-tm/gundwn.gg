@@ -24,8 +24,6 @@ export default function Menu() {
 
   const currentDevice = useMobileDetect();
 
-  //const [path, setPath] = useState('');
-  //const [searchParams, setSearchParams] = useState<ReadonlyURLSearchParams | null>(null);
   const [modal, setModal] = useState<string | null>(null);
 
   const play = () => {
@@ -111,8 +109,6 @@ export default function Menu() {
   }
 
   function onPathChanged(path: string, searchParams: ReadonlyURLSearchParams, modal: string | null) {
-    //setPath(path);
-    //setSearchParams(searchParams);
     setModal(modal);
   }
 
