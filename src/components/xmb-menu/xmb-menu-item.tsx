@@ -4,6 +4,8 @@
 import { CSSProperties } from "react";
 import { XmbItem } from "@models/menu";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useWindowSize } from "@uidotdev/usehooks";
+import useMobileDetect from "@/hooks/useMobileDetect";
 import "./xmb.css";
 import Link from "next/link";
 
@@ -16,25 +18,48 @@ interface MenuItemProps {
 export const MenuItem = ({ index, item, y }: MenuItemProps) => {
   const active = index === y;
   const router = useRouter();
+  const size = useWindowSize();
+  const platform = useMobileDetect();
 
   let top = 0;
   let bottom = 0;
 
-  if (index === 0) {
-    if (active) {
-      top = 50;
-      bottom = 30;
+  if (platform.isMobile()) {
+    if (index === 0) {
+      if (active) {
+        top = 30;
+        bottom = 40;
+      } else {
+        top = -300 + -110 * y;
+        bottom = 0;
+      }
     } else {
-      top = -190 + -120 * y;
-      bottom = 20;
+      if (active) {
+        top = 350;
+        bottom = 30;
+      } else {
+        top = 30;
+        bottom = 30;
+      }
     }
-  } else {
-    if (active) {
-      top = 250 - 5 * y;
-      bottom = 20;
+  }
+  else {
+    if (index === 0) {
+      if (active) {
+        top = 50;
+        bottom = 30;
+      } else {
+        top = -190 + -120 * y;
+        bottom = 20;
+      }
     } else {
-      top = 15;
-      bottom = 30;
+      if (active) {
+        top = 250 - 5 * y;
+        bottom = 20;
+      } else {
+        top = 15;
+        bottom = 30;
+      }
     }
   }
 
