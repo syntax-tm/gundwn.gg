@@ -134,11 +134,7 @@ export default function Menu() {
   actions.set('h', { repeat: false, onKeyPress: onHelp });
   actions.set('f1', { repeat: false, onKeyPress: onHelp });
 
-  const keyboardInput: KeyboardInput = {
-    actions: actions
-  };
-
-  useKeyboard(keyboardInput);
+  useKeyboard({ actions: actions, enabledOnModal: false });
 
   const wheelInput: WheelInput = {
     onWheelUp: onUp,
