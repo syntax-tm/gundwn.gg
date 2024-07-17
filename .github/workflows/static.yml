@@ -54,13 +54,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      - name: Enable corepack
-        id: enable-corepack
-        run: |
-          corepack enable
+          node-version: "22"
+          cache: 'yarn'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
