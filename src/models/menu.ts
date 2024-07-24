@@ -1,5 +1,10 @@
 import { ReactElement } from "react";
 
+export type Position = {
+  x: number;
+  y: number;
+}
+
 export interface IXmbMenu {
   items: IXmbCategory[];
   readonly [index: number]: IXmbCategory;
@@ -16,32 +21,37 @@ export interface IXmbCategory {
 export interface IXmbItem {
   id: string;
   title: string;
-  link: string | null;
+  link?: string | null;
   type: string;
   icon: ReactElement | null;
-  description: string | null;
+  description?: string | null;
   shortDescription?: string;
   category?: string;
   shortCategory?: string;
-  modal: string | null;
+  modal?: string | null;
+  items?: IXmbItem[] | null;
+  readonly [index: number]: IXmbItem;
+  [name: string]: any;
 }
 
 export class XmbItem implements IXmbItem {
   id: string;
   title: string;
-  link: string | null = '';
+  link?: string | null = '';
   type: string = '';
   icon: ReactElement | null;
-  description: string | null = '';
+  description?: string | null = '';
   shortDescription?: string = '';
   category?: string = '';
   shortCategory?: string = '';
   isActive: boolean = false;
   visible: boolean = true;
-  modal: string | null = '';
-  onClick: null | (() => void) = null;
+  modal?: string | null = '';
+  items?: XmbItem[] | null;
+  onClick?: (() => void) | null = null;
+  readonly [index: number]: IXmbItem;
 
-  constructor(id: string = '', title: string = '', icon: ReactElement | null = null, link: string | null = null, description: string | null = null) {
+  constructor(id: string = '', title: string = '', icon: ReactElement | null = null, link?: string | null, description?: string | null) {
     this.id = id;
     this.title = title;
     this.icon = icon;
@@ -60,6 +70,13 @@ export class XmbItem implements IXmbItem {
   {
       let item = new XmbItem(id, title, icon);
       item.modal = modal;
+      return item;
+  }
+
+  static createSubmenu(id: string = '', title: string = '', icon: ReactElement | null, items?: XmbItem[] | null): XmbItem
+  {
+      let item = new XmbItem(id, title, icon);
+      item.items = items;
       return item;
   }
 
@@ -134,11 +151,6 @@ export class XmbCategory implements IXmbCategory {
   }
 }
 
-export type Position = {
-  x: number;
-  y: number;
-}
-
 export class XmbMenu implements IXmbMenu {
   [index: number]: XmbCategory;
   items: XmbCategory[];
@@ -162,6 +174,10 @@ export class XmbMenu implements IXmbMenu {
 
   public get position(): Position {
     return this._position;
+  }
+
+  public set position(value: Position) {
+    this._position = value;
   }
 
   constructor(items: XmbCategory[]) {

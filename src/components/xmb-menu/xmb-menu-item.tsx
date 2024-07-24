@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
 import { CSSProperties } from "react";
 import { XmbItem } from "@models/menu";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useWindowSize } from "@uidotdev/usehooks";
 import useMobileDetect from "@/hooks/useMobileDetect";
-import "./xmb.css";
 import Link from "next/link";
+import "./xmb.css";
 
 interface MenuItemProps {
   index: number;
@@ -24,43 +24,24 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
   let top = 0;
   let bottom = 0;
 
-  if (platform.isMobile()) {
-    if (index === 0) {
-      if (active) {
-        top = 30;
-        bottom = 40;
-      } else {
-        top = -300 + -110 * y;
-        bottom = 0;
-      }
-    } else {
-      if (active) {
-        top = 350;
-        bottom = 30;
-      } else {
-        top = 30;
-        bottom = 30;
-      }
-    }
-  }
-  else {
-    if (index === 0) {
-      if (active) {
-        top = 50;
-        bottom = 30;
-      } else {
-        top = -190 + -120 * y;
-        bottom = 20;
-      }
-    } else {
-      if (active) {
-        top = 250 - 5 * y;
-        bottom = 20;
-      } else {
-        top = 15;
-        bottom = 30;
-      }
-    }
+  const height = size?.height ?? 0;
+  const width = size?.width ?? 0;
+  const isPortrait = height > width;
+
+  if (platform.isMobile() || isPortrait) {
+    top = index === 0
+      ? (active ? 30 : -300 + -130 * y)
+      : (active ? 350 : 30);
+    bottom = index === 0
+      ? (active ? 40 : 0)
+      : 30;
+  } else {
+    top = index === 0
+      ? (active ? 50 : -190 + -120 * y)
+      : (active ? 250 - 5 * y : 15);
+    bottom = index === 0
+      ? (active ? 30 : 20)
+      : (active ? 20 : 30);
   }
 
   const styleProps: CSSProperties = {
@@ -82,8 +63,8 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
             router.push(`/?modal=${item.modal}`);
             return;
           }
-          if (item.onClick === null) return;
-          item.onClick!();
+          if (item.onClick === null || item.onClick === undefined) return;
+          item.onClick();
         }}
         target={item.link && "_blank" || undefined}>
         {item.icon}

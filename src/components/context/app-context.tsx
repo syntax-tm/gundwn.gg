@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-'use client';
+"use client"
 
 import {
   ReactNode,

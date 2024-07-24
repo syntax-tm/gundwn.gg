@@ -75,6 +75,9 @@ function buildGamingCategory(): XmbCategory {
     const xbox = new XmbItem("xbox", "Xbox", icons.xbox, 'http://live.xbox.com/Profile?Gamertag=gundwn');
     xbox.description = 'View Xbox profile';
 
+    const bnet = XmbItem.createModal("bnet", "Battle.Net", icons.battleNet, 'bnet');
+    bnet.description = 'View Battle.Net profile';
+
     const ep = new XmbItem("exophase", "Exophase", icons.exophase, 'https://www.exophase.com/user/Gundwn/');
     ep.description = 'View Exophase profile';
 
@@ -89,7 +92,7 @@ function buildGamingCategory(): XmbCategory {
         yt,
         steam,
         xbox,
-        //new XmbItem("battlenet", "Battle.net", icons.battleNet, 'Gundwn#11586'),
+        bnet,
         ep,
         ta,
         ttv,

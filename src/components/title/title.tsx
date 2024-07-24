@@ -3,7 +3,6 @@ import './title.css';
 
 const header = 'trey';
 const caption = 'speedrunner of life and games.™';
-//const caption = '(n.) Speedrunner of life and games.';
 
 export default function Title() {
   return (

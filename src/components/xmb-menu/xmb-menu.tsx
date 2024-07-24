@@ -1,18 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
 import { useRef, useState, CSSProperties } from "react";
-import { XmbMenu, XmbCategory, XmbItem } from "@models/menu";
-import { useSearchParams, useRouter, ReadonlyURLSearchParams } from "next/navigation";
-import build from "@services/menuBuilder";
+import { useRouter, ReadonlyURLSearchParams } from "next/navigation";
+import { XmbMenu } from "@models/menu";
+import { MenuCategory } from "./xmb-menu-category";
 import Title from "@components/title/title";
-import "./xmb.css";
 import useWheel, { WheelInput } from "@/hooks/useWheel";
-import useKeyboard, { KeyboardInput, KeyPressAction } from "@/hooks/useKeyboard";
+import useKeyboard, { KeyPressAction } from "@/hooks/useKeyboard";
 import useSwipe, { SwipeInput } from "@/hooks/useSwipe";
 import useMobileDetect from "@/hooks/useMobileDetect";
-import { MenuCategory } from "./xmb-menu-category";
 import useQuery from "@/hooks/useQuery";
+import build from "@services/menuBuilder";
+import "./xmb.css";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 const config: XmbMenu = build();
 
@@ -23,6 +24,7 @@ export default function Menu() {
   const router = useRouter();
 
   const currentDevice = useMobileDetect();
+  const windowSize = useWindowSize();
 
   const [modal, setModal] = useState<string | null>(null);
 
@@ -67,7 +69,7 @@ export default function Menu() {
       return;
     }
 
-    if (selectedItem.link !== null) {
+    if (selectedItem.link) {
       openInNewTab(selectedItem.link);
       return;
     }
@@ -153,21 +155,25 @@ export default function Menu() {
 
   const isMobile = currentDevice.isMobile();
 
-  const scaleX = isMobile ? 140 : 270;
+  const height = windowSize?.height ?? 0;
+  const width = windowSize?.width ?? 0;
+
+  const scaleX = isMobile || height > width
+    ? 140
+    : 270;
   const baseMarginLeft = isMobile ? 20 : 100;
 
-  const mr = 0;
   const ml = baseMarginLeft - (scaleX * x);
 
   const mainStyle:CSSProperties = {
-    marginRight: `${mr}%`,
+    marginRight: '0%',
     marginLeft: `${ml}px`,
     width: '200%',
     display: 'flex',
   };
 
   return (
-    <div className=''>
+    <div className='xmb-menu'>
       <audio ref={audioRef} src='/audio/nav.mp3' />
       <Title />
       <main id="menu" className="">

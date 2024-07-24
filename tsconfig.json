@@ -25,11 +25,13 @@
       "@components/*": ["./src/components/*"],
       "@models/*": ["./src/models/*"],
       "@services/*": ["./src/services/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@/*": ["./src/*"],
       "image/*": ["./public/image/*"],
       "svg/*": ["./public/svg/*"],
       "@config/*": ["./public/config/*"],
       "@audio/*": ["./public/audio/*"],
+      "@app/*": ["./src/app/*"],
       "public/*": ["./public/*"]
     }
   },

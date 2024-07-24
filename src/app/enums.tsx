@@ -1,7 +1,11 @@
 export enum Views {
   HOME,
-  DIALOG,
-  ACCOUNT,
+  MODAL,
+}
+
+export enum ModalViews {
+  HELP,
+  
 }
 
 export enum Direction {

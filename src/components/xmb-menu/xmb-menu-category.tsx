@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
-import { useRef, useState, ReactNode, useEffect, Dispatch, SetStateAction, CSSProperties } from "react";
 import { XmbCategory } from "@models/menu";
 import { MenuItem } from "./xmb-menu-item";
 import "./xmb.css";
