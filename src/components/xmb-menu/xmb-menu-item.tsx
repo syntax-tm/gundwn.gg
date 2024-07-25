@@ -30,7 +30,7 @@ export const MenuItem = ({ index, item, y }: MenuItemProps) => {
 
   if (platform.isMobile() || isPortrait) {
     top = index === 0
-      ? (active ? 30 : -300 + -130 * y)
+      ? (active ? 30 : -300 + -110 * y)
       : (active ? 350 : 30);
     bottom = index === 0
       ? (active ? 40 : 0)
