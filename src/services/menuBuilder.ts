@@ -95,7 +95,7 @@ function buildGamingCategory(): XmbCategory {
         bnet,
         ep,
         ta,
-        ttv,
+        //ttv,
     ];
     const category: XmbCategory = new XmbCategory(2, "Gaming", icons.games, items);
 
@@ -129,7 +129,7 @@ function buildSocialCategory(): XmbCategory {
         yt,
         fb,
         ig,
-        x,
+        //x,
         //XmbItem.create("snapchat", "Snapchat", icons.snapchat, () => { alert(''); }),
         spotify,
         stats,
